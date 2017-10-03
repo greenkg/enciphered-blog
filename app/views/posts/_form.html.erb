@@ -1,0 +1,31 @@
+<%= form_for(@post) do |f| %>
+  <%= render "shared/errors", object: @post %>
+  <p class="required">
+    <%= f.label :title %><br/>
+    <%= f.text_field :title, autofocus: true %>
+  </p>
+  <p class="required">
+    <%= f.label :author %><br/>
+    <%= f.text_field :author %>
+  </p>
+  <p class="required">
+    <%= f.label :image_file_name %><br/>
+    <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => "bird.jpg" %>
+  </p>
+  <p class="required">
+    <%= f.label :published_on %><br/>
+    <%= f.date_field :published_on, :value => Time.now %>
+  </p>
+  <p class="required">
+    <%= f.label :category %><br/>
+    <%= f.select :category, Post::CATEGORIES, prompt: "Choose category" %>
+  </p>
+  <p class="required">
+    <%= f.label :body %><br/>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+    <%= link_to "Cancel", posts_path, class: 'button' %>
+  </p>
+<% end %>

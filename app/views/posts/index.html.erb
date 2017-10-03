@@ -1,0 +1,9 @@
+<article>
+  <h1><%= pluralize(@posts.size, 'Post') %></h1>
+  <h3><%= link_to("Add new post", new_post_path) %></h3>
+    <% @posts.each do |post| %>
+      <h2><%= link_to post.title, post %></h2>
+      <h5><%= post.published_on.strftime("%A %m/%d/%Y") %></h5>
+      <p><%= truncate(post.body, length: 30, separator: ' ') %></p>
+    <% end %>
+</article>

@@ -1,0 +1,12 @@
+<article>
+  <h1><%= @post.title %></h1>
+  <h4>Published on: <%= @post.published_on.strftime("%A %m/%d/%Y") %></h4>
+  <h5>Author: <%= @post.author %></h5>
+  <%= image_tag(@post.image_file_name) %>
+  <p><%= simple_format(@post.body) %></p>
+  <%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>
+  <%= link_to "Write Comment", new_post_comment_path(@post) %>
+  <%= link_to "Edit", edit_post_path(@post) %>
+  <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+</article>
