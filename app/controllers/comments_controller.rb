@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
 	before_action :set_post
+	before_action :require_signin, except: [:index, :show]
 
 	def index
 		@comments = @post.comments

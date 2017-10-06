@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  
-	root :to => 'home#index'
+  resource :session
+
+  resources :users
+  get 'signup' => 'users#new'
+	
+  root :to => 'home#index'
 	
 	root "posts#index"
   resources :posts do

@@ -18,6 +18,10 @@
 	  <% end %>
 	</ul>
 
-	<%= link_to "Write Comment", new_post_comment_path(@post) %>
+	<% if current_user %>
+    <%= link_to "Write Comment", new_post_comment_path(@post) %>
+  <% else %>
+    Must be <%= link_to "signed in", new_session_path %> to post a comment.
+  <% end %>
 
 </article>

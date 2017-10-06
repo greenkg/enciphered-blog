@@ -1,7 +1,17 @@
 <nav>
   <ul>
-  	<li><%= link_to("Home", root_path)%></li>
-    <li><%= link_to("Posts", posts_path) %></li>
-    <li>About</li>
+    <% if current_user %>
+      <li>Hello <%= link_to current_user.name, current_user %></li>
+      <li><%= link_to "Account Settings", edit_user_path(current_user), class: 'btn' %>
+      <li><%= link_to "Sign Out", session_path, method: :delete, class: 'btn' %>
+    <% else %>
+      <li class="btn"><%= link_to "Sign up!", signup_path, class: 'btn' %></li>
+      <li><%= link_to "Sign in", new_session_path, class: 'btn' %></li>
+    <% end %>
+  	<li><%= link_to "Home", root_path, class: 'btn' %></li>
+    <li><%= link_to "Posts", posts_path, class: 'btn' %></li>
+    <% if current_user %>
+      <li><%= link_to "User Directory", users_path, class: 'btn' %></li>
+    <% end %>
   </ul>
 </nav>

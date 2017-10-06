@@ -4,9 +4,15 @@
   <h5>Author: <%= @post.author %></h5>
   <%= image_tag(@post.image_file_name) %>
   <p><%= simple_format(@post.body) %></p>
-  <%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>
-  <%= link_to "Write Comment", new_post_comment_path(@post) %>
-  <%= link_to "Edit", edit_post_path(@post) %>
-  <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>
+  <% if current_user %>
+    <%= link_to "Write Comment", new_post_comment_path(@post) %>
+  <% else %>
+    Must be <%= link_to "signed in", new_session_path %> to post a comment.
+  <% end %>
+  <% if current_user_admin? %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+    <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 
 </article>
