@@ -10,7 +10,7 @@
     <% end %>
   	<li><%= link_to "Home", root_path, class: 'btn' %></li>
     <li><%= link_to "Posts", posts_path, class: 'btn' %></li>
-    <% if current_user %>
+    <% if current_user_admin? %>
       <li><%= link_to "User Directory", users_path, class: 'btn' %></li>
     <% end %>
   </ul>
