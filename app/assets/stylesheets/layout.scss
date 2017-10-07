@@ -1,5 +1,5 @@
 @import "colors";
-@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One|Mukta|Oswald|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Mukta|Roboto|Work+Sans');
 
 html {
   height: 100%;
@@ -11,14 +11,25 @@ body {
 }
 
 header {
-  padding-top: 0;
-  color: $primary-text-color;
+  padding-top: .3em;
   background-color: $primary-background-color;
   text-align: center;
   position: fixed;
   top: 0.25em;
   float: left;
   width: 100%;
+}
+
+header h1 {
+  color: $special-text-color;
+  background-color: $special-background-color;
+  width: 180px;
+  font-family: 'Mukta', sans-serif;
+  margin-left: 100px;
+}
+
+header a {
+  color: $special-text-color;
 }
 
 footer {
@@ -35,12 +46,13 @@ footer {
   width: 100%;
   background-color: $secondary-background-color;
   text-align: right;
-  padding-bottom: 0;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
 }
 
 .navbar a {
   color: $secondary-link-color;
-  font-family: "Mukta", sans-serif;
+  font-family: "Work Sans", sans-serif;
   padding-right: 1em;
 }
 
@@ -52,7 +64,7 @@ a {
 
 article {
   margin-left: 20px;
-  padding: 5em 1em 1em 1em;
+  padding: 7em 1em 1em 1em;
   overflow: hidden;
   font-family: "Roboto";
 }
@@ -60,14 +72,6 @@ article {
 textarea {
   width: 450px;
   height: 200px;
-}
-
-header h1 {
-  color: $special-text-color;
-  background-color: $special-background-color;
-  width: 180px;
-  font-family: 'Mukta', sans-serif;
-  margin-left: 100px;
 }
 
 .post {
@@ -78,12 +82,12 @@ header h1 {
 .post-title {
   background-color: $secondary-background-color;
   width: 100%;
-  padding: 0.25em 0.5em 0.25em 0.75em;
+  padding: 0.5em 0.5em 0.5em 0.75em;
 }
 
 .post-title a {
   color: $special-link-color;
-  font-family: 'Mutka', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: bold;
 }
 

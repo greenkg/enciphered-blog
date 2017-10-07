@@ -1,5 +1,6 @@
 <div class="navbar">
   <div>
+    <%= content_for(:admin) %>
     <span><%= link_to "Posts", posts_path, class: 'btn' %></span>
     <% if current_user %>
       <span><%= link_to "Settings", edit_user_path(current_user), class: 'btn' %></span>

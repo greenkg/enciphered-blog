@@ -9,16 +9,16 @@
         <%= image_tag(post.image_file_name) %>
       </span>
       <span class="post-summary">
-        <p><%= truncate(post.body, length: 125, separator: ' ') %><%= link_to " (read more)", post %></p>
+        <p><%= truncate(post.body, length: 125, separator: ' ') %></p>
+        <p><%= link_to " (read more)", post %></p>
       </span>
     </div>
   <% end %>
 
 </article>
 
-<% content_for(:sidebar) do %>
+<% content_for(:admin) do %>
   <% if current_user_admin? %>
-    <li>Admin</li>
-    <li><%= link_to("Add new post", new_post_path, class: 'btn') %></li>
+    <span><%= link_to("Add new post", new_post_path, class: 'btn') %></span>
   <% end %>
 <% end %>
