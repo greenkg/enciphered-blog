@@ -1,14 +1,24 @@
 <article>
-  <h1><%= pluralize(@posts.size, 'Post') %></h1>
+  <h3><%= pluralize(@posts.size, 'Post') %></h3>
   
-  <% if current_user_admin? %>
-    <h3><%= link_to("Add new post", new_post_path) %></h3>
-  <% end %>
-
   <% @posts.each do |post| %>
-    <h2><%= link_to post.title, post %></h2>
-    <h5><%= post.published_on.strftime("%A %m/%d/%Y") %></h5>
-    <p><%= truncate(post.body, length: 30, separator: ' ') %></p>
+    <div class='post-title'><%= link_to post.title, post %></div>
+    <div><%= post.published_on.strftime("%A %m/%d/%Y") %></div>
+    <div class="post">
+      <span>
+        <%= image_tag(post.image_file_name) %>
+      </span>
+      <span class="post-summary">
+        <p><%= truncate(post.body, length: 125, separator: ' ') %><%= link_to " (read more)", post %></p>
+      </span>
+    </div>
   <% end %>
 
 </article>
+
+<% content_for(:sidebar) do %>
+  <% if current_user_admin? %>
+    <li>Admin</li>
+    <li><%= link_to("Add new post", new_post_path, class: 'btn') %></li>
+  <% end %>
+<% end %>

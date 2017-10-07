@@ -1,45 +1,92 @@
 @import "colors";
+@import url('https://fonts.googleapis.com/css?family=Rubik+Mono+One|Mukta|Oswald|Roboto');
 
-div.container {
-    width: 100%;
-    border: 1px solid gray;
+html {
+  height: 100%;
 }
 
-header, footer {
-    padding: 1em;
-    color: $primary-text-color;
-    background-color: $primary-background-color;
-    clear: left;
-    text-align: center;
+body {
+  height: 100%;
+  padding-bottom: 6px;
 }
 
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-    background-color: $secondary-background-color;
-    color: $primary-text-color;
+header {
+  padding-top: 0;
+  color: $primary-text-color;
+  background-color: $primary-background-color;
+  text-align: center;
+  position: fixed;
+  top: 0.25em;
+  float: left;
+  width: 100%;
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
+footer {
+  padding: 1em;
+  color: $primary-text-color;
+  background-color: $primary-background-color;
+  clear: left;
+  text-align: center;
 }
-   
-nav ul a {
-    text-decoration: none;
-    color: $secondary-link-color;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $secondary-background-color;
+  text-align: right;
+  padding-bottom: 0;
+}
+
+.navbar a {
+  color: $secondary-link-color;
+  font-family: "Mukta", sans-serif;
+  padding-right: 1em;
+}
+
+a {
+  color: $primary-link-color;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
+  margin-left: 20px;
+  padding: 5em 1em 1em 1em;
+  overflow: hidden;
+  font-family: "Roboto";
 }
 
 textarea {
   width: 450px;
   height: 200px;
+}
+
+header h1 {
+  color: $special-text-color;
+  background-color: $special-background-color;
+  width: 180px;
+  font-family: 'Mukta', sans-serif;
+  margin-left: 100px;
+}
+
+.post {
+  display: flex;
+  padding: 1em;
+}
+
+.post-title {
+  background-color: $secondary-background-color;
+  width: 100%;
+  padding: 0.25em 0.5em 0.25em 0.75em;
+}
+
+.post-title a {
+  color: $special-link-color;
+  font-family: 'Mutka', sans-serif;
+  font-weight: bold;
+}
+
+.post-summary {
+  padding-left: 2em;
 }
