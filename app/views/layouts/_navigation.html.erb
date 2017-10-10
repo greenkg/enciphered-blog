@@ -1,13 +1,27 @@
-<div class="navbar">
-  <div>
-    <%= content_for(:admin) %>
-    <span><%= link_to "Posts", posts_path, class: 'btn' %></span>
-    <% if current_user %>
-      <span><%= link_to "Settings", edit_user_path(current_user), class: 'btn' %></span>
-      <span><%= link_to "Sign Out", session_path, method: :delete, class: 'btn' %></span>
+<nav class="navbar navbar-expand-sm">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Brand -->
+  <%= link_to("Encipher", root_url, class: "site-title") %>
+  </i>
+
+  <!-- Links -->
+  <div class="collapse navbar-collapse" id="nav-content">   
+    <ul class="navbar-nav">
+      <%= content_for(:admin) %>
+      <li class="nav-item">
+        <%= link_to "Posts", posts_path, class: 'btn' %>
+      </li>
+      <% if current_user %>
+        <li><%= link_to "Settings", edit_user_path(current_user), class: 'btn' %></li>
+        <li><%= link_to "Sign Out", session_path, method: :delete, class: 'btn' %></li>
     <% else %>
-      <span><%= link_to "Sign up!", signup_path, class: 'btn' %></span>
-      <span><%= link_to "Sign in", new_session_path, class: 'btn' %></span>
+      <li><%= link_to "Sign up!", signup_path, class: 'btn' %></li>
+      <li><%= link_to "Sign in", new_session_path, class: 'btn' %></li>
     <% end %>
+    </ul>
   </div>
-</div>
+</nav>

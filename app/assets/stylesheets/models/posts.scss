@@ -4,6 +4,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.post {
+  display: flex;
+  padding: 1em;
+  max-width: 700px;
+}
+
+.post img {
+  width: 200px;
+  margin-right: 1em;
+}
+
+.post-title {
+  background-color: $secondary-background-color;
+  width: 100%;
+  padding: 0.5em 0.5em 0.5em 0.75em;
+}
+
+.post-title a {
+  color: $special-link-color;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* ERRORS */
 
 section#errors {
