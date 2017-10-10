@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006074237) do
+ActiveRecord::Schema.define(version: 20171009111424) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
     t.text "comment"
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -31,6 +39,30 @@ ActiveRecord::Schema.define(version: 20171006074237) do
     t.date "published_on"
     t.string "author"
     t.string "image_file_name"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.text "summary"
+    t.boolean "finished"
+    t.string "image_file_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topicalizations", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_topicalizations_on_post_id"
+    t.index ["topic_id"], name: "index_topicalizations_on_topic_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

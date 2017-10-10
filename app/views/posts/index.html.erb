@@ -11,6 +11,7 @@
       <span class="post-summary">
         <p><%= truncate(post.body, length: 125, separator: ' ') %></p>
         <p><%= link_to " (read more)", post %></p>
+        <p><%= pluralize(post.likers.size, "Like") %>   <%= pluralize(post.comments.size, "Comment") %></p>
       </span>
     </div>
   <% end %>

@@ -1,0 +1,7 @@
+class TopicsController < ApplicationController
+
+  
+  
+
+
+end

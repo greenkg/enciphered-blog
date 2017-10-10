@@ -5,9 +5,10 @@
 	<ul>
 	  <% @comments.each do |comment| %>
 	    <li>
-	      <p>
-	        from <%= comment.name %>:
-	      </p>
+	      <h3>
+	        from <%= link_to comment.user.name, comment.user %>:
+	      </h3>
+	      <%= profile_image_for(comment.user, size: 35) %>
 	      <p>
 	      	<%= time_ago_in_words(comment.created_at) %> ago
 	      </p>
