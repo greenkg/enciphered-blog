@@ -10,8 +10,8 @@
       <%= image_tag(post.image_file_name) %>
     </div>
     <div class="col-sm-8 mx-auto">
-      <p><%= markdown(post.body) %></p>
-      <p><%= link_to " (read more)", post %></p>
+      <p><%= markdown(truncate(post.body, length: 300, separator: ' ', omission: '. . .')) %></p>
+      <p><%= link_to "(read more)", post %></p>
       <p><%= pluralize(post.likers.size, "Like") %>   <%= pluralize(post.comments.size, "Comment") %></p>
     </div>
   </div>
