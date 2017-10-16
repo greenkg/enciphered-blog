@@ -5,7 +5,7 @@
   </button>
 
   <!-- Brand -->
-  <%= link_to("Encipher", root_url, class: "site-title") %>
+  <%= link_to("Enciphered By", root_url, class: "site-title") %>
   </i>
 
   <!-- Links -->
@@ -14,6 +14,9 @@
       <%= content_for(:admin) %>
       <li class="nav-item">
         <%= link_to "Posts", posts_path, class: 'btn' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Projects", projects_path, class: 'btn' %>
       </li>
       <% if current_user %>
         <li><%= link_to "Settings", edit_user_path(current_user), class: 'btn' %></li>

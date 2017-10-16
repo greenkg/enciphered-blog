@@ -1,24 +1,22 @@
-<article class="container">
-  <h3><%= pluralize(@posts.size, 'Post') %></h3>
-  
-  <% @posts.each do |post| %>
-    <div class="row mx-auto">
-      <div class='post-title'><%= link_to post.title, post %></div>
-      <div><%= post.published_on.strftime("%A %m/%d/%Y") %></div>
-    </div>
-    <div class="row post mx-auto">
-      <div class="col-sm-4 mx-auto">
-        <%= image_tag(post.image_file_name) %>
-      </div>
-      <div class="col-sm-8 mx-auto">
-        <p><%= truncate(post.body, length: 125, separator: ' ') %></p>
-        <p><%= link_to " (read more)", post %></p>
-        <p><%= pluralize(post.likers.size, "Like") %>   <%= pluralize(post.comments.size, "Comment") %></p>
-      </div>
-    </div>
-  <% end %>
+<h3><%= pluralize(@posts.size, 'Post') %></h3>
 
-</article>
+<% @posts.each do |post| %>
+  <div class="row mx-auto">
+    <div class='post-title'><%= link_to post.title, post %></div>
+    <div><%= post.published_on.strftime("%A %m/%d/%Y") %></div>
+  </div>
+  <div class="row post mx-auto">
+    <div class="col-sm-4 mx-auto">
+      <%= image_tag(post.image_file_name) %>
+    </div>
+    <div class="col-sm-8 mx-auto">
+      <p><%= markdown(post.body) %></p>
+      <p><%= link_to " (read more)", post %></p>
+      <p><%= pluralize(post.likers.size, "Like") %>   <%= pluralize(post.comments.size, "Comment") %></p>
+    </div>
+  </div>
+<% end %>
+
 
 <% content_for(:admin) do %>
   <% if current_user_admin? %>

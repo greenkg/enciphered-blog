@@ -1,0 +1,24 @@
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Projects</h1>
+    <p class="lead text-muted">Some pithy statement about my projects</p>
+  </div>
+</section>
+
+<div class="container m-t-md">
+  <div class="row">
+
+    <% @projects.each do |project| %>
+      <div class="card mx-auto">
+        <%= image_tag(project.image_file_name, alt: project.name, class: "card-img-top img-fluid") %>
+        <div class="card-block">
+          <h4 class="card-title"><%= project.name %></h4>
+          <h6 class='text-muted'><%= project_status(project.finished) %></h6>
+          <p class-"card-text"><%= project.summary %></p>
+          <%= link_to("Read More", project, class: 'btn btn-primary') %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

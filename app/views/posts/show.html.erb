@@ -11,7 +11,7 @@
     <% end %>
   </ul>
   <%= image_tag(@post.image_file_name) %>
-  <p><%= simple_format(@post.body) %></p>
+  <p><%= markdown(@post.body) %></p>
   <p><%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>   <%= pluralize(@likers.size, "Like") %></p>
 
   <% if @likers.any? %>

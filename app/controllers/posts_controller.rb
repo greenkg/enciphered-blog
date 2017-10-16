@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	before_action :require_admin, except: [:index, :show]
 
 	def index
-		@posts = Post.all.reverse
+		@posts = Post.order("published_on DESC")
 	end
 
 	def show

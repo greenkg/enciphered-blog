@@ -39,6 +39,9 @@ gem 'bootstrap'
 gem 'autoprefixer-rails', '~> 6.0.3'
 gem 'popper_js', '~> 1.11.1'
 
+# Use RecdCarpet for text editing
+gem 'redcarpet'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
