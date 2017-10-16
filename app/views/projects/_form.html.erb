@@ -1,0 +1,38 @@
+<%= form_for(@project) do |f| %>
+  <%= render "shared/errors", object: @project %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :summary %><br/>
+      <%= f.text_area :summary, cols: 50, rows: 10, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :project_status %><br/>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button(:finished, true, class: "radioButton") %>
+        <%= f.label "Complete", class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button(:finished, false, class: "radioButton") %>
+        <%= f.label "In Progress", class: "form-check-label" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <%= f.label :image_file_name %><br/>
+    <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => "project-blog.jpg", class: "form-control" %>
+  </div>
+  <br/>
+  <div class="form-row">
+    <%= f.button(type: "submit", class: "btn btn-success") %>
+    <%= link_to "Cancel", projects_path, class: "btn btn-danger" %>
+  </div>
+<% end %>

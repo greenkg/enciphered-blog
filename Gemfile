@@ -36,12 +36,14 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Boostrap styling
 gem 'bootstrap'
-gem 'autoprefixer-rails', '~> 6.0.3'
+gem 'autoprefixer-rails'
 gem 'popper_js', '~> 1.11.1'
 
 # Use RecdCarpet for text editing
 gem 'redcarpet'
 gem 'pygments.rb'
+
+gem 'sprockets'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

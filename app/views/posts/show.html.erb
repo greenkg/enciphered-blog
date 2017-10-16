@@ -14,45 +14,43 @@
   <p><%= markdown(@post.body) %></p>
   <p><%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>   <%= pluralize(@likers.size, "Like") %></p>
 
-  <% if @likers.any? %>
-    <h3>Liked By:</h3>
-    <ul>
-      <% @likers.each do |user| %>
-        <li>
-          <%= link_to user.username, user %>
-        </li>
+  <div>
+    <% if current_user %>
+      <% if @current_like %>
+        <%= link_to "Unlike Post", post_like_path(@post, @current_like), method: :delete, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to "Like Post", post_likes_path(@post), method: :new, class: "btn btn-success" %>
       <% end %>
-    </ul>
-  <% end %>
+      <%= link_to "Write Comment", new_post_comment_path(@post), class: "btn btn-primary" %>
+    <% else %>
+      <p class="text-muted">Must be <%= link_to "signed in", new_session_path %> to leave a comment or like a post.</p>
+    <% end %>
+    <br/>
+  </div>
 
   <% if @comments.any? %>
-    <h3>Comments</h3>
-    <ul>
-      <% @comments.each do |comment| %>
-        <li>
-          <%= profile_image_for(comment.user, size: 35) %>
-          <%= link_to comment.user.username, comment.user %>
-          <%= comment.comment %>
-        </li>
-      <% end %>
-    </ul>
+    <div>
+      <h3>Comments</h3>
+      <div>
+        <% @comments.each do |comment| %>
+          <div>
+            <%= profile_image_for(comment.user, size: 35) %>
+            <%= link_to comment.user.username, comment.user %>
+            <%= comment.comment %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 
-  <% if current_user %>
-    <% if @current_like %>
-      <p><%= button_to "Unlike Post", post_like_path(@post, @current_like), method: :delete %></p>
-    <% else %>
-      <p><%= button_to "Like Post", post_likes_path(@post) %></p>
-    <% end %>
-    <p><%= button_to "Write Comment", new_post_comment_path(@post) %></p>
-  <% else %>
-    Must be <%= link_to "signed in", new_session_path %> to leave a comment or like a post.
-  <% end %>
+  
 
   <% if current_user_admin? %>
-    <h3>Admin Options</h3>
-    <%= link_to "Edit", edit_post_path(@post) %>
-    <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div>
+      <h3>Admin Options</h3>
+      <%= link_to "Edit", edit_post_path(@post), class: "btn btn-primary" %>
+      <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
   <% end %>
 
 </article>

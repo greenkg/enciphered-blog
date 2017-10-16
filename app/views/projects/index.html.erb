@@ -22,3 +22,9 @@
 
   </div>
 </div>
+
+<% content_for(:admin) do %>
+  <% if current_user_admin? %>
+    <span><%= link_to(sanitize('Add Project ' + '<i class="fa fa-wrench on fa-square-o" aria-hidden="true"></i>'), new_project_path, class: 'btn') %></span>
+  <% end %>
+<% end %>

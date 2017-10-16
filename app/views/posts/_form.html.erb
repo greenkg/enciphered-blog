@@ -1,32 +1,61 @@
 <%= form_for(@post) do |f| %>
   <%= render "shared/errors", object: @post %>
 
-  <p class="required">
-    <%= f.label :title %><br/>
-    <%= f.text_field :title, autofocus: true %>
-  </p>
-  <p class="required">
-    <%= f.label :author %><br/>
-    <%= f.text_field :author %>
-  </p>
-  <p class="required">
-    <%= f.label :image_file_name %><br/>
-    <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => "bird.jpg" %>
-  </p>
-  <p class="required">
-    <%= f.label :published_on %><br/>
-    <%= f.date_field :published_on, :value => Time.now %>
-  </p>
-  <p class="required">
-    <%= f.label :body %><br/>
-    You may use markdown to style this text.</br>
-    <%= f.text_area :body, cols: 50, rows: 10 %>
-  </p>
-  <p>
-    <%= f.collection_check_boxes(:topic_ids, Topic.all, :id, :name) %>
-  </p>
-  <p>
-    <%= f.submit %>
-    <%= link_to "Cancel", posts_path, class: 'button' %>
-  </p>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :title %>
+      <%= f.text_field :title, autofocus: true, placeholder: :title, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :author %>
+      <%= f.text_field :author, placeholder: :author, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :image_file_name %><br/>
+      <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => "bird.jpg", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :published_on %><br/>
+      <%= f.date_field :published_on, :value => default_date(@post), class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :body %><br/>
+      <small class="text-muted">You may use markdown to style this text.</small>
+      <br/>
+      <%= f.text_area :body, cols: 50, rows: 10, class: "form-control"%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :project %><br/>
+      <%= f.select :project, Project.all.collect { |p| [p.name, p.id] }, include_blank: "None", class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :topics %><br/>
+      <%= f.collection_check_boxes(:topic_ids, Topic.all, :id, :name) do |b| %>
+        <div class="form-check">
+          <%= b.label(class: "form-check-label") do %>
+              <div class="form-check">
+                <%= b.check_box(class: "form-check-input") %>
+                <%= b.object.name %>  
+              </div>    
+          <% end %>
+       </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="form-row">
+    <%= f.button(type: "submit", class: "btn btn-success") %>
+    <%= link_to "Cancel", posts_path, class: "btn btn-danger" %>
+  </div>
 <% end %>
