@@ -16,7 +16,7 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <%= f.label :image_file_name %><br/>
-      <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => "bird.jpg", class: "form-control" %>
+      <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => default_image(@post), class: "form-control" %>
     </div>
   </div>
   <div class="form-row">
@@ -35,8 +35,8 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <%= f.label :project %><br/>
-      <%= f.select :project, Project.all.collect { |p| [p.name, p.id] }, include_blank: "None", class: "form-control" %>
+      <%= f.label :project_id %><br/>
+      <%= f.select :project_id, Project.all.collect { |p| [p.name, p.id] }, include_blank: "None", class: "form-control" %>
     </div>
   </div>
   <div class="form-row">

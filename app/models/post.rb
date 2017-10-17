@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
-	belongs_to :project
+  has_one :project
+
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user

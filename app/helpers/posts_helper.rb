@@ -8,5 +8,13 @@ module PostsHelper
     end
   end
 
+  def default_image(post)
+    if post.image_file_name
+      image_file_name ||= post.image_file_name
+    else
+      image_file_name ||= "bird.jpg"
+    end
+  end
+
 
 end

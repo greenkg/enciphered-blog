@@ -2,7 +2,23 @@
   <h1><%= @project.name %></h1>
   <h3>Status: <%= project_status(@project.finished) %></h3>
   <%= image_tag(@project.image_file_name) %>
-  <p><%= simple_format(@project.summary) %></p>
+  <p>
+    <i class="fa fa-info-circle" aria-hidden="true"></i><%= @project.short_summary %>
+  </p>
+  <p>
+    <i class="fa fa-cogs" aria-hidden="true"></i><%= @project.tools %>
+  </p>
+  <p>
+    <i class="fa fa-github" aria-hidden="true"></i><%= link_to "Repository", @project.repo_link %></i>
+  </p>
+  <p>
+    Summary: <%= simple_format(@project.summary) %>
+  </p>
+
+  <h3>Related Posts</h3>
+  <% @posts.each do |p| %>
+    <p><%= link_to p.title, p %></p>
+  <% end %>
 
   <% if current_user_admin? %>
     <div>

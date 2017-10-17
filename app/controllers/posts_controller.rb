@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 		@likers = @post.likers
 		@comments = @post.comments
 		@topics = @post.topics
+		if @post.project_id
+			@project =  Project.find(@post.project_id)
+		end
 		if current_user
 			@current_like = current_user.likes.find_by(post_id: @post.id)
 		end
@@ -53,7 +56,7 @@ class PostsController < ApplicationController
 private
 
 	def post_params
-		post_params = params.require(:post).permit(:title, :body, :author, :image_file_name, :category, :published_on, topic_ids: [])
+		post_params = params.require(:post).permit(:title, :body, :author, :image_file_name, :category, :project_id, :published_on, topic_ids: [])
 	end
 
 end

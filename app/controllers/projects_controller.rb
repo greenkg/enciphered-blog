@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @posts = Post.where("project_id = ?", @project.id)
   end
 
   def new
@@ -46,7 +47,7 @@ class ProjectsController < ApplicationController
 private
 
   def project_params
-    project_params = params.require(:project).permit(:name, :summary, :finished, :image_file_name)
+    project_params = params.require(:project).permit(:name, :short_summary, :summary, :tools, :repo_link, :finished, :image_file_name)
   end
 
 end

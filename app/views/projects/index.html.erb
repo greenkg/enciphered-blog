@@ -14,7 +14,15 @@
         <div class="card-block">
           <h4 class="card-title"><%= project.name %></h4>
           <h6 class='text-muted'><%= project_status(project.finished) %></h6>
-          <p class-"card-text"><%= project.summary %></p>
+          <p class="card-text">
+            <i class="fa fa-info-circle" aria-hidden="true"></i><%= project.short_summary %>
+          </p>
+          <p class="card-text">
+            <i class="fa fa-cogs" aria-hidden="true"></i><%= project.tools %>
+          </p>
+          <p class="card-text">
+            <i class="fa fa-github" aria-hidden="true"></i><%= link_to "Repository", project.repo_link %></i>
+          </p>
           <%= link_to("Read More", project, class: 'btn btn-primary') %>
         </div>
       </div>

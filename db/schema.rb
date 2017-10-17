@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016150147) do
+ActiveRecord::Schema.define(version: 20171017112344) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -30,16 +30,8 @@ ActiveRecord::Schema.define(version: 20171016150147) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.string "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.date "published_on"
-    t.string "author"
-    t.string "image_file_name"
-  end
+# Could not dump table "posts" because of following StandardError
+#   Unknown type 'reference' for column 'projects'
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -48,8 +40,9 @@ ActiveRecord::Schema.define(version: 20171016150147) do
     t.string "image_file_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "project_id"
-    t.index ["project_id"], name: "index_projects_on_project_id"
+    t.string "tools"
+    t.string "repo_link"
+    t.string "short_summary"
   end
 
   create_table "topicalizations", force: :cascade do |t|

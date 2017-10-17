@@ -2,6 +2,9 @@
   <h1><%= @post.title %></h1>
   <h4>Published on: <%= @post.published_on.strftime("%A %m/%d/%Y") %></h4>
   <h5>Author: <%= @post.author %></h5>
+  <% if @project %>
+    <h5>Project: <%= link_to @project.name, @project %></h5>
+  <% end %>
   <h5>Topics:</h5>
   <ul>
     <% @topics.each do |topic| %>
@@ -12,15 +15,18 @@
   </ul>
   <%= image_tag(@post.image_file_name) %>
   <p><%= markdown(@post.body) %></p>
-  <p><%= link_to pluralize(@post.comments.size, "comment"), post_comments_path(@post) %>   <%= pluralize(@likers.size, "Like") %></p>
-
   <div>
     <% if current_user %>
       <% if @current_like %>
-        <%= link_to "Unlike Post", post_like_path(@post, @current_like), method: :delete, class: "btn btn-danger" %>
-      <% else %>
-        <%= link_to "Like Post", post_likes_path(@post), method: :new, class: "btn btn-success" %>
-      <% end %>
+          <%= link_to sanitize('<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>'), post_like_path(@post, @current_like), method: :delete %>
+        <% else %>
+          <%= link_to sanitize('<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'), post_likes_path(@post), method: :new %>
+        <% end %><%= pluralize(@likers.size, "Like") %>
+        <% end %>
+    </div>
+
+  <div>
+    <% if current_user %>
       <%= link_to "Write Comment", new_post_comment_path(@post), class: "btn btn-primary" %>
     <% else %>
       <p class="text-muted">Must be <%= link_to "signed in", new_session_path %> to leave a comment or like a post.</p>
