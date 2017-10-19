@@ -39,6 +39,10 @@
     </div>
   </div>
   <div class="form-row">
+    <%= f.label "Repository Link" %><br/>
+    <%= f.text_field :repo_link, class: "form-control" %>
+  </div>
+  <div class="form-row">
     <%= f.label :image_file_name %><br/>
     <%= f.text_field :image_file_name, placeholder: "GIF, JPG, or PNG file name", :value => default_image(@project), class: "form-control" %>
   </div>
