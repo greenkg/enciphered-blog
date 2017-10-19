@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm">
   
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars" aria-hidden="true"></i>
   </button>
 
   <!-- Brand -->
@@ -9,11 +9,11 @@
   </i>
 
   <!-- Links -->
-  <div class="collapse navbar-collapse" id="nav-content">   
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">   
+    <ul class="navbar-nav mr-auto">
       <%= content_for(:admin) %>
       <li class="nav-item">
-        <%= link_to "Posts", posts_path, class: 'btn' %>
+        <%= link_to "Blog", posts_path, class: 'btn' %>
       </li>
       <li class="nav-item">
         <%= link_to "Projects", projects_path, class: 'btn' %>

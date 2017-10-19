@@ -43,7 +43,7 @@ gem 'popper_js', '~> 1.11.1'
 gem 'redcarpet'
 gem 'pygments.rb'
 
-gem 'sprockets'
+gem 'sprockets', '~> 4.0.0.beta5'
 
 gem 'bundler'
 
@@ -51,7 +51,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
+  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'sqlite3'
 end
