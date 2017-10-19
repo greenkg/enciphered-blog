@@ -27,6 +27,7 @@ body {
   color: $secondary-link-color;
   font-family: "Work Sans", sans-serif;
   padding-right: 1em;
+  text-decoration: none;
 }
 
 .navbar .site-title {
@@ -55,7 +56,6 @@ footer {
 
 a {
   color: $primary-link-color;
-  text-decoration: none;
 }
 
 article {
