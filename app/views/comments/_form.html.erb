@@ -1,0 +1,11 @@
+<%= form_for([@post, @comment]) do |f| %>
+  <%= render "shared/errors", object: @comment %>
+  <p class="required">
+    <%= f.label :comment %><br/>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Post Comment' %>
+    <%= link_to "Cancel", @post, class: 'button' %>
+  </p>
+<% end %>

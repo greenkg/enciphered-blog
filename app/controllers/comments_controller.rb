@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.new(comment_params)
 		@comment.user = current_user
 		if @comment.save
-			redirect_to post_comments_path(@post), notice: "Comment succesfully created!"
+			redirect_to @post, notice: "Comment succesfully created!"
 		else
 			render :new
 		end
@@ -28,7 +28,7 @@ private
 	end
 
 	def set_post
-  	@post = Post.find(params[:post_id])
+  	@post = Post.find_by(slug: params[:post_id])
 	end
 
 end

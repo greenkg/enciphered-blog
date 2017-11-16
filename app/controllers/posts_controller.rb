@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 	def show
 		@post = Post.find_by!(slug: params[:id])
 		@likers = @post.likers
+		@comment = Comment.new
 		@comments = @post.comments
 		@topics = @post.topics
 		if @post.project_id
