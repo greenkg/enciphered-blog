@@ -17,4 +17,8 @@ class Post < ApplicationRecord
   message: "must reference a GIF, JPG, or PNG image"
 	}
 
+  def to_param
+    slug
+  end
+
 end

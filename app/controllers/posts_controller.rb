@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.find_by!(slug: params[:id])
 		@likers = @post.likers
 		@comments = @post.comments
 		@topics = @post.topics
@@ -34,11 +34,11 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		@post = Post.find(params[:id])
+		@post = Post.find_by(slug: params[:id])
 	end
 
 	def update
-		@post = Post.find(params[:id])
+		@post = Post.find_by(slug: params[:id])
 		if @post.update(post_params)
 			flash[:notice] = "Post successfully updated!"
 			redirect_to @post
