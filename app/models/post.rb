@@ -8,7 +8,9 @@ class Post < ApplicationRecord
   has_many :topicalizations, dependent: :destroy
   has_many :topics, through: :topicalizations
 
-	validates :title, :author, :published_on, presence: true
+  before_validation -> { generate_slug(self.title) }
+
+	validates :title, :author, :published_on, :slug, presence: true
 	validates :body, length: { minimum: 25 }
 	validates :image_file_name, allow_blank: true, format: {
   with:    /\w+\.(gif|jpg|png)\z/i,
