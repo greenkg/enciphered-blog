@@ -15,7 +15,6 @@ private
 
   helper_method :current_user?
 
-
   def require_signin
     unless current_user
       session[:intended_url] = request.url

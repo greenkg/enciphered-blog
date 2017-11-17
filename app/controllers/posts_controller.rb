@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 		@post = Post.find_by!(slug: params[:id])
 		@likers = @post.likers
 		@comment = Comment.new
-		@comments = @post.comments
+		@comments = @post.comments.includes(:user)
 		@topics = @post.topics
 		if @post.project_id
 			@project =  Project.find(@post.project_id)

@@ -4,6 +4,14 @@
     <%= f.label :comment %><br/>
     <%= f.text_area :comment %>
   </p>
+  <p class="required">
+    <%= label_tag :name %><br/>
+    <%= text_field_tag :name %>
+  </p>
+  <p class="required">
+    <%= label_tag :email %><br/>
+    <%= text_field_tag :email %>
+  </p>
   <p>
     <%= f.submit 'Post Comment', class: "btn btn-primary" %>
     <%= link_to "Cancel", @post, class: "btn btn-primary" %>

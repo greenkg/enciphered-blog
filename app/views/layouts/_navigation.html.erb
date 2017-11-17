@@ -20,7 +20,7 @@
       </li>
       <% if current_user %>
         <li><%= link_to "Settings", edit_user_path(current_user), class: 'btn' %></li>
-        <li><%= link_to "Sign Out", session_path, method: :delete, class: 'btn' %></li>
+        <li><%= link_to "Sign Out", logout_path, method: "delete", class: 'btn' %></li>
     <% else %>
       <li><%= link_to "Sign up!", signup_path, class: 'btn' %></li>
       <li><%= link_to "Sign in", new_session_path, class: 'btn' %></li>

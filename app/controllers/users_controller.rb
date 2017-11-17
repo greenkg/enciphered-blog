@@ -19,10 +19,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = (user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, notice: "Thanks for joining!"
+      redirect_to session[:intended_url]
     else
       render :new
     end
@@ -49,6 +49,10 @@ private
 
   def user_params
     params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+  end
+
+  def guest_params
+    params.permit(:username, :email);
   end
 
   def require_correct_user
